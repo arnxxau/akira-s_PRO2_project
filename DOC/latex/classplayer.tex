@@ -1,0 +1,197 @@
+\hypertarget{classplayer}{}\doxysection{Referencia de la Clase player}
+\label{classplayer}\index{player@{player}}
+
+
+{\ttfamily \#include $<$player.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classplayer_ae44180ebf3c2fab6fa082f8c3b9672d8}{player}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Creadora por defecto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplayer_aab5d2e47b80e0481f09ca0df8b823057}{$\sim$player}} ()
+\item 
+void \mbox{\hyperlink{classplayer_a8f3dddda7a7065bcd36ebecee70c68f1}{modify\+\_\+rank\+\_\+position}} (int rank\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Modificadora de posición en el rango global. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplayer_a54712a35f9e4f5ae951445ddc0de2f1d}{modify\+\_\+total\+\_\+points}} (int points)
+\begin{DoxyCompactList}\small\item\em Modificadora de puntos totales del jugador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplayer_a926f048b7b214308a95e865d5b41b478}{modify\+\_\+stadistics}} (\mbox{\hyperlink{structstadistics}{stadistics}} stats)
+\begin{DoxyCompactList}\small\item\em Modificadora de las estadísticas del jugador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a48676deba93d0175c95fb65ddb784478}{get\+\_\+rank\+\_\+position}} ()
+\begin{DoxyCompactList}\small\item\em Operación de consulta de posición. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classplayer_aca496a8c87f3024f772f9c461983ec2c}{get\+\_\+name}} () const
+\begin{DoxyCompactList}\small\item\em Operación de consulta de nombre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a861c512a5cef818759b913e7c3905fa1}{get\+\_\+total\+\_\+points}} () const
+\begin{DoxyCompactList}\small\item\em Operación de consulta de los puntos totales. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structstadistics}{stadistics}} \mbox{\hyperlink{classplayer_af111d07b0ee1a8c7adf81195c09bc7d2}{get\+\_\+stadistics}} () const
+\begin{DoxyCompactList}\small\item\em Operación de consulta de estadísticas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplayer_a9ee00258c57bec85c16b9c21e26bec78}{print\+\_\+player}} ()
+\begin{DoxyCompactList}\small\item\em Imprime el nombre, la posición en el ranking, los puntos y el resto de estadísticas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+
+
+Definición en la línea \mbox{\hyperlink{player_8hh_source_l00021}{21}} del archivo \mbox{\hyperlink{player_8hh_source}{player.\+hh}}.
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classplayer_ae44180ebf3c2fab6fa082f8c3b9672d8}\label{classplayer_ae44180ebf3c2fab6fa082f8c3b9672d8}} 
+\index{player@{player}!player@{player}}
+\index{player@{player}!player@{player}}
+\doxysubsubsection{\texorpdfstring{player()}{player()}}
+{\footnotesize\ttfamily player\+::player (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Creadora por defecto. 
+
+Se ejecuta automáticamente al declarar un jugador. \begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es un jugador con 0 puntos iniciales, todas las estadísticas a 0 junto con su correspondiente nombre. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_aab5d2e47b80e0481f09ca0df8b823057}\label{classplayer_aab5d2e47b80e0481f09ca0df8b823057}} 
+\index{player@{player}!````~player@{$\sim$player}}
+\index{````~player@{$\sim$player}!player@{player}}
+\doxysubsubsection{\texorpdfstring{$\sim$player()}{~player()}}
+{\footnotesize\ttfamily player\+::$\sim$player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classplayer_a8f3dddda7a7065bcd36ebecee70c68f1}\label{classplayer_a8f3dddda7a7065bcd36ebecee70c68f1}} 
+\index{player@{player}!modify\_rank\_position@{modify\_rank\_position}}
+\index{modify\_rank\_position@{modify\_rank\_position}!player@{player}}
+\doxysubsubsection{\texorpdfstring{modify\_rank\_position()}{modify\_rank\_position()}}
+{\footnotesize\ttfamily void player\+::modify\+\_\+rank\+\_\+position (\begin{DoxyParamCaption}\item[{int}]{rank\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Modificadora de posición en el rango global. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es el jugador con la nueva posición asignada. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_a54712a35f9e4f5ae951445ddc0de2f1d}\label{classplayer_a54712a35f9e4f5ae951445ddc0de2f1d}} 
+\index{player@{player}!modify\_total\_points@{modify\_total\_points}}
+\index{modify\_total\_points@{modify\_total\_points}!player@{player}}
+\doxysubsubsection{\texorpdfstring{modify\_total\_points()}{modify\_total\_points()}}
+{\footnotesize\ttfamily void player\+::modify\+\_\+total\+\_\+points (\begin{DoxyParamCaption}\item[{int}]{points }\end{DoxyParamCaption})}
+
+
+
+Modificadora de puntos totales del jugador. 
+
+\begin{DoxyPrecond}{Precondición}
+El entero points tiene que ser más grande o igual a -\/total\+\_\+points. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es el jugador con los nuevos puntos sumados. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_a926f048b7b214308a95e865d5b41b478}\label{classplayer_a926f048b7b214308a95e865d5b41b478}} 
+\index{player@{player}!modify\_stadistics@{modify\_stadistics}}
+\index{modify\_stadistics@{modify\_stadistics}!player@{player}}
+\doxysubsubsection{\texorpdfstring{modify\_stadistics()}{modify\_stadistics()}}
+{\footnotesize\ttfamily void player\+::modify\+\_\+stadistics (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstadistics}{stadistics}}}]{stats }\end{DoxyParamCaption})}
+
+
+
+Modificadora de las estadísticas del jugador. 
+
+\begin{DoxyPrecond}{Precondición}
+Tiene que ser una struct de estadísticas válido. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es el jugador con las estadísticas nuevas. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_a48676deba93d0175c95fb65ddb784478}\label{classplayer_a48676deba93d0175c95fb65ddb784478}} 
+\index{player@{player}!get\_rank\_position@{get\_rank\_position}}
+\index{get\_rank\_position@{get\_rank\_position}!player@{player}}
+\doxysubsubsection{\texorpdfstring{get\_rank\_position()}{get\_rank\_position()}}
+{\footnotesize\ttfamily int player\+::get\+\_\+rank\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Operación de consulta de posición. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la posición del jugador en el ranking global. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_aca496a8c87f3024f772f9c461983ec2c}\label{classplayer_aca496a8c87f3024f772f9c461983ec2c}} 
+\index{player@{player}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!player@{player}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily std\+::string player\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Operación de consulta de nombre. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna el nombre del jugador. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_a861c512a5cef818759b913e7c3905fa1}\label{classplayer_a861c512a5cef818759b913e7c3905fa1}} 
+\index{player@{player}!get\_total\_points@{get\_total\_points}}
+\index{get\_total\_points@{get\_total\_points}!player@{player}}
+\doxysubsubsection{\texorpdfstring{get\_total\_points()}{get\_total\_points()}}
+{\footnotesize\ttfamily int player\+::get\+\_\+total\+\_\+points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Operación de consulta de los puntos totales. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna los puntos totales del jugador. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_af111d07b0ee1a8c7adf81195c09bc7d2}\label{classplayer_af111d07b0ee1a8c7adf81195c09bc7d2}} 
+\index{player@{player}!get\_stadistics@{get\_stadistics}}
+\index{get\_stadistics@{get\_stadistics}!player@{player}}
+\doxysubsubsection{\texorpdfstring{get\_stadistics()}{get\_stadistics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstadistics}{stadistics}} player\+::get\+\_\+stadistics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Operación de consulta de estadísticas. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna las estadísticas del jugador. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classplayer_a9ee00258c57bec85c16b9c21e26bec78}\label{classplayer_a9ee00258c57bec85c16b9c21e26bec78}} 
+\index{player@{player}!print\_player@{print\_player}}
+\index{print\_player@{print\_player}!player@{player}}
+\doxysubsubsection{\texorpdfstring{print\_player()}{print\_player()}}
+{\footnotesize\ttfamily void player\+::print\+\_\+player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Imprime el nombre, la posición en el ranking, los puntos y el resto de estadísticas. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Las estadísticas se habrán imprimido por pantalla. 
+\end{DoxyPostcond}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{player_8hh}{player.\+hh}}\end{DoxyCompactItemize}

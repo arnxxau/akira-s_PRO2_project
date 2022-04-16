@@ -1,0 +1,8 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="node1" title="Programa principal para la práctica de circuitos de tennis. Contiene la lógica básica para ejecutar l..." alt="" coords="67,5,141,32"/>
+<area shape="rect" id="node2" href="$circuit_8hh.html" title="Especificaciones de circuit." alt="" coords="67,80,141,107"/>
+<area shape="rect" id="node3" href="$tournament_8hh.html" title="Especificaciones de tournament." alt="" coords="51,155,157,181"/>
+<area shape="rect" id="node4" href="$ranking_8hh.html" title="Especificaciones de ranking." alt="" coords="5,229,88,256"/>
+<area shape="rect" id="node6" href="$categories_8hh.html" title="Especificaciones de tournament." alt="" coords="113,229,213,256"/>
+<area shape="rect" id="node5" href="$player_8hh.html" title="Especificaciones de player." alt="" coords="9,304,84,331"/>
+</map>

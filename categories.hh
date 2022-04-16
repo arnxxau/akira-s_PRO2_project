@@ -17,6 +17,12 @@ private:
     std::vector<std::string> names;
     std::vector<std::vector<int> > points_per_level;
 public:
+/** @brief Creadora por defecto. 
+
+      Se ejecuta automáticamente al declarar categorías.
+      \pre <em> cierto <em>
+      \post El resultado es una instancia de categorías vacio.
+  */  
     categories();
     ~categories();
 
@@ -29,46 +35,45 @@ public:
   */  
     void read_categories();
 
-
   /** @brief Operación de consulta para los puntos de una cierta categoría y nivel.
 
       \pre <em>cierto</em>
       \post Retorna los puntos que hay que sumar al jugador en función de la categoría y el nivel introducidos.
   */  
-    int get_points(int category, int level);
+    int get_points(int category, int level) const;
 
  /** @brief Consultora para el nombre de la categoría.
 
       \pre El entero debe existir entre 1 y max_categories.
       \post Retorna el nombre de la categoría introducida.
   */  
-    int get_name(int category);
+    int get_name(int category) const;
 
  /** @brief Consultora para el nivel de un nombre de una categoría.
 
       \pre El string debe ser un nombre válido de una categoría
       \post Retorna el nivel de la categoría introducida.
   */  
-    int get_level(const std::string name);
+    int get_level(const std::string name) const;
 
  /** @brief Consultora para el nivel máximo de las categorías.
 
       \pre <em> cierto <em>
       \post Retorna el nivel máximo de las categorías
   */  
-    int get_max_lvl();
+    int get_max_lvl() const;
 
  /** @brief Consultora para la cantidad de categorías.
 
       \pre <em> cierto <em>
       \post Retorna el número de categorías existente
   */ 
-    int get_max_categories();
+    int get_max_categories() const;
 
   /** @brief Imprime por orden creciente de identificador, el nombre y la tabla de putnos por niveles de cada categoría.
 
       \pre <em>cierto</em>
-      \post ...
+      \post Se habrán imprimido los datos por pantalla.
   */  
     void print_categories();
 };

@@ -7,22 +7,32 @@
 
 #ifndef NO_DIAGRAM
 #include <string>
+#include <iostream>
 #endif
+
+struct stadistics
+{ 
+    int played_matches = 0;
+    std::pair <int, int> matches_won_lost = {0, 0};
+    std::pair <int, int> sets_won_lost = {0, 0};
+    std::pair <int, int> games_won_lost = {0, 0};
+};
+
 class player
 {
 private:
     std::string name;
     int rank_pos;
     int total_points;
-    struct stadistics
-    {
-        int played_matches = 0;
-        std::pair <int, int> matches_won_lost = {0, 0};
-        std::pair <int, int> sets_won_lost = {0, 0};
-        std::pair <int, int> games_won_lost = {0, 0};
-    };
+    stadistics player_stats;
     
 public:
+  /** @brief Creadora por defecto. 
+
+      Se ejecuta automáticamente al declarar un jugador.
+      \pre <em>cierto</em>
+      \post El resultado es un jugador con 0 puntos iniciales, todas las estadísticas a 0 junto con su correspondiente nombre.
+  */  
     player(std::string name);
     ~player();
 
@@ -30,14 +40,14 @@ public:
   /** @brief Modificadora de posición en el rango global. 
 
       \pre <em>cierto</em>
-      \post El resultado es el jugador con la nueva posición asignada
+      \post El resultado es el jugador con la nueva posición asignada.
   */  
     void modify_rank_position(int rank_pos);
 
   /** @brief Modificadora de puntos totales del jugador. 
 
       \pre El entero points tiene que ser más grande o igual a -total_points.
-      \post El resultado es el jugador con los nuevos puntos sumados
+      \post El resultado es el jugador con los nuevos puntos sumados.
   */  
     void modify_total_points(int points);
 
@@ -60,26 +70,26 @@ public:
       \pre <em>cierto</em>
       \post Retorna el nombre del jugador.
   */  
-    std::string get_name();
+    std::string get_name() const;
 
   /** @brief Operación de consulta de los puntos totales. 
 
       \pre <em>cierto</em>
       \post Retorna los puntos totales del jugador.
   */  
-    int get_total_points();
+    int get_total_points() const;
 
   /** @brief Operación de consulta de estadísticas.
 
       \pre <em>cierto</em>
       \post Retorna las estadísticas del jugador.
   */  
-    stadistics get_stadistics();
+    stadistics get_stadistics() const;
 
   /** @brief Imprime el nombre, la posición en el ranking, los puntos y el resto de estadísticas.
 
       \pre <em>cierto</em>
-      \post ...
+      \post Las estadísticas se habrán imprimido por pantalla.
   */  
     void print_player();
 };

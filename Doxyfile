@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = utf-8
 PROJECT_NAME           = "Akira's PRO2 project"
-PROJECT_NUMBER         = "test0"
+PROJECT_NUMBER         = "v0.1"
 OUTPUT_DIRECTORY       = "./DOC"
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = Spanish
@@ -98,7 +98,7 @@ INPUT_ENCODING         = utf-8
 FILE_PATTERNS          = *.hh \
                          main*.cpp
 RECURSIVE              = NO
-EXCLUDE                = *~ \ BinTree.hh
+EXCLUDE                = BinTree.hh
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = *~
 EXCLUDE_SYMBOLS        = 
