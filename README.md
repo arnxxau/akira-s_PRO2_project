@@ -1,1 +1,1 @@
-# akira-s_PRO2_project
+# Akira's PRO2 project
