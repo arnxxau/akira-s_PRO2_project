@@ -1,7 +1,0 @@
-<map id="circuit.hh" name="circuit.hh">
-<area shape="rect" id="node1" title="Especificaciones de circuit." alt="" coords="67,5,141,32"/>
-<area shape="rect" id="node2" href="$tournament_8hh.html" title="Especificaciones de tournament." alt="" coords="51,80,157,107"/>
-<area shape="rect" id="node3" href="$ranking_8hh.html" title="Especificaciones de ranking." alt="" coords="5,155,88,181"/>
-<area shape="rect" id="node5" href="$categories_8hh.html" title="Especificaciones de tournament." alt="" coords="113,155,213,181"/>
-<area shape="rect" id="node4" href="$player_8hh.html" title="Especificaciones de player." alt="" coords="9,229,84,256"/>
-</map>

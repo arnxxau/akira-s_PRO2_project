@@ -1,5 +1,5 @@
 /**
- * @mainpage Circuito de torneos de tenis.
+ * @mainpage Circuito de torneos de tenis. Arnau Granados.
   En este programa modular se ofrece una simulación de un circuito de tennis mediante el uso principal de árboles.
   Se introducen las clases <em>player<em>, <em>ranking<em> (esencialmente un gestor de jugadores), <em>torneo<em>, <em>circuito<em> (un gestor de torneos)
 */
@@ -29,7 +29,7 @@ int main() {
                 cout << circuit.get_global_ranking().get_number_of_players() << endl;
             }
             else
-                cout << "El jugador ya existe en el circuito" << endl;
+                cout << "El jugador ya existe en el circuito." << endl;
         }
 
         else if (s == "nuevo_torneo" or s == "nt"){
@@ -38,9 +38,9 @@ int main() {
             int c;
             cin >> c;
             if (circuit.exists_tournament(t))
-                cout << "El torneo ya existe en el circuito" << endl;
+                cout << "El torneo ya existe en el circuito." << endl;
             else if (1 <= c and c >= circuit.get_categories().get_max_categories())
-                cout << "La categoría no está definida" << endl;
+                cout << "La categoría no está definida." << endl;
             else {
                 circuit.add_tournament(tournament(t, c, cat));
                 cout << circuit.get_n_tournaments() << endl;
@@ -54,7 +54,7 @@ int main() {
                 circuit.remove_player(id);
                 cout << circuit.get_global_ranking().get_number_of_players() << endl;
             } else 
-                cout << "El jugador no existe en el circuito" << endl;
+                cout << "El jugador no existe en el circuito." << endl;
         }
 
         else if (s == "baja_torneo" or "bj") {
@@ -64,7 +64,7 @@ int main() {
                 circuit.remove_tournament(t);
                 cout << circuit.get_n_tournaments() << endl;
             } else 
-                cout << "El torneo no existe en el circuito" << endl;
+                cout << "El torneo no existe en el circuito." << endl;
         }
 
         else if (s == "inciar_torneo" or s == "it") {
@@ -93,7 +93,7 @@ int main() {
             if (circuit.get_global_ranking().is_player_there(id))
                 circuit.get_global_ranking().get_player_by_name(id).print_player();
             else 
-                cout << "El jugador no existe en el circuito" << endl;
+                cout << "El jugador no existe en el circuito." << endl;
         }
 
         else if (s == "listar_torneos" or s == "lt") {

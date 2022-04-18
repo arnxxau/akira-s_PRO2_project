@@ -4,8 +4,8 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = utf-8
-PROJECT_NAME           = "Akira's PRO2 project"
-PROJECT_NUMBER         = "v0.1"
+PROJECT_NAME           = "Proyecto PRO2"
+PROJECT_NUMBER         = "especificación v1.0"
 OUTPUT_DIRECTORY       = "./DOC"
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = Spanish

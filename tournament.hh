@@ -33,7 +33,7 @@ public:
 
       Se ejecuta automáticamente al declarar un torneo.
       \pre Debe ser una categoría válida entre 1 y C.
-      \post El resultado es un torneo con un nombre y dificultad asignadas.
+      \post El resultado es un torneo con el nombre y la dificultad asignadas.
   */  
     tournament(std::string name, int difficulty, categories cat);
     ~tournament();

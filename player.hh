@@ -10,13 +10,6 @@
 #include <iostream>
 #endif
 
-struct stadistics
-{ 
-    int played_matches = 0;
-    std::pair <int, int> matches_won_lost = {0, 0};
-    std::pair <int, int> sets_won_lost = {0, 0};
-    std::pair <int, int> games_won_lost = {0, 0};
-};
 
 class player
 {
@@ -24,6 +17,13 @@ private:
     std::string name;
     int rank_pos;
     int total_points;
+    struct stadistics
+  { 
+    int played_matches = 0;
+    std::pair <int, int> matches_won_lost = {0, 0};
+    std::pair <int, int> sets_won_lost = {0, 0};
+    std::pair <int, int> games_won_lost = {0, 0};
+  };
     stadistics player_stats;
     
 public:
@@ -51,19 +51,34 @@ public:
   */  
     void modify_total_points(int points);
 
-  /** @brief Modificadora de las estadísticas del jugador. 
 
-      \pre Tiene que ser una struct de estadísticas válido.
-      \post El resultado es el jugador con las estadísticas nuevas.
+  /** @brief Modificadora de los partidos ganados y perdidos del jugador. 
+
+      \pre Los enteros deben ser positivos.
+      \post El resultado es el jugador con las estadísticas modificadas.
   */  
-    void modify_stadistics(stadistics stats);
+    void modifiy_matches(int won, int lost);
+
+  /** @brief Modificadora de los sets ganados y perdidos del jugador. 
+
+      \pre Los enteros deben ser positivos.
+      \post El resultado es el jugador con las estadísticas modificadas.
+  */  
+    void modifiy_sets(int won, int lost);
+
+  /** @brief Modificadora de los juegos ganados y perdidos del jugador. 
+
+      \pre Los enteros deben ser positivos.
+      \post El resultado es el jugador con las estadísticas modificadas.
+  */  
+    void modifiy_games(int won, int lost);
 
   /** @brief Operación de consulta de posición. 
 
       \pre <em>cierto</em>
       \post Retorna la posición del jugador en el ranking global.
   */  
-    int get_rank_position();
+    int get_rank_position() const;
 
   /** @brief Operación de consulta de nombre.
 

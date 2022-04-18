@@ -24,7 +24,7 @@ public:
 /** @brief Creadora por defecto. 
 
       Se ejecuta automáticamente al declarar un circuito.
-      \pre <em> cierto <em>
+      \pre <em>cierto<em>
       \post El resultado es un circuito vacio con las categorías introducidas.
   */  
     circuit(categories cat);
@@ -34,7 +34,7 @@ public:
 
   /** @brief Operación de lectura para torneos. 
 
-      \pre T es mayor o igual que 0 y la categoría entre 1 y 0.
+      \pre T es mayor o igual que 0 y la categoría está entre 1 y 0.
       \post El resultado es una lista con los torneos leídos.
   */  
     void read_tournaments();

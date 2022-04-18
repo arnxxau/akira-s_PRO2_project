@@ -20,7 +20,7 @@ public:
 /** @brief Creadora por defecto. 
 
       Se ejecuta automáticamente al declarar categorías.
-      \pre <em> cierto <em>
+      \pre <em>cierto<em>
       \post El resultado es una instancia de categorías vacio.
   */  
     categories();
@@ -30,7 +30,7 @@ public:
   /** @brief Operación de lectura para guardar todas las categorías. Primero lee el número de categorías, después el nivel máximo, 
    *    y a continuación, los puntos por cada categoría y nivel junto con su nombre.
 
-      \pre el número total de puntos debe ser max_lvl * max_categories
+      \pre El número total de puntos debe ser max_lvl * max_categories
       \post El resultado son todas las categorías con sus nombres y su respectivos datos almacenados.
   */  
     void read_categories();
@@ -58,14 +58,14 @@ public:
 
  /** @brief Consultora para el nivel máximo de las categorías.
 
-      \pre <em> cierto <em>
+      \pre <em>cierto<em>
       \post Retorna el nivel máximo de las categorías
   */  
     int get_max_lvl() const;
 
  /** @brief Consultora para la cantidad de categorías.
 
-      \pre <em> cierto <em>
+      \pre <em>cierto<em>
       \post Retorna el número de categorías existente
   */ 
     int get_max_categories() const;
