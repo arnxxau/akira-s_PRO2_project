@@ -34,7 +34,7 @@ public:
 
   /** @brief Operación de lectura para torneos. 
 
-      \pre T es mayor o igual que 0 y la categoría está entre 1 y 0.
+      \pre T es mayor o igual que 0 y la categoría está entre 1 y C.
       \post El resultado es una lista con los torneos leídos.
   */  
     void read_tournaments();
@@ -58,7 +58,7 @@ public:
       \pre El torneo existe en la lista.
       \post Retorna el torneo con el nombre implícito de la función.
   */  
-    tournament get_tournament(const std::string& name) const;
+    tournament get_tournament(const std::string& name);
 
   /** @brief Operación de consulta. 
 
@@ -95,7 +95,7 @@ public:
       \pre El jugador no existe en la lista.
       \post El resultado es el mismo ranking pero con el jugador nuevo añadido en la última posición y n_players + 1
   */  
-    void add_player(player p);
+    void add_player(const player& p);
 
   /** @brief Operación de borrado para jugadores. Usa esencialmente las operaciones de ranking.
 
@@ -109,14 +109,14 @@ public:
       \pre <em>cierto</em>
       \post Retorna el ranking global del circuito.
   */  
-    ranking get_global_ranking() const;
+    ranking get_global_ranking();
 
   /** @brief Operación de consulta. 
 
       \pre <em>cierto</em>
       \post Retorna las categorías del circuito.
   */  
-    categories get_categories() const;
+    categories get_categories();
 };
 
 #endif

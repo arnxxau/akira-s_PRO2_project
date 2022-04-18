@@ -23,7 +23,7 @@ private:
     
     bool already_played = false;
 
-    BinTree <string> pairing_chart;
+    BinTree <std::string> pairing_chart;
     BinTree <int> results;
 
     void init_tour();

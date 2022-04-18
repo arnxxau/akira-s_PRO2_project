@@ -54,31 +54,31 @@ public:
 
   /** @brief Añade un jugador. 
 
-      \pre <em>cierto</em>
+      \pre El jugador no debe estar dentro del ranking.
       \post El resultado es el mismo ranking pero con el nuevo jugador en la última posición.
   */  
-    void add_player();
+    void add_player(const player& p);
 
   /** @brief Elimina un jugador. 
 
-      \pre <em>cierto</em>
+      \pre El jugador tiene que estar dentro del ranking.
       \post El resultado es el ranking sin el jugador, y los jugadores de r + 1 a P mejoran en una posición.
   */  
-    void remove_player();
+    void remove_player(const std::string name);
 
   /** @brief Consulta un jugador del ranking por su nombre.
 
       \pre El jugador existe en el ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_name(const std::string name) const;
+    player get_player_by_name(const std::string name);
 
   /** @brief Consulta un jugador del ranking por su posición en el ranking.
 
       \pre El entero es una posición válida del ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_pos(int position) const;
+    player get_player_by_pos(int position);
 
   /** @brief Consulta si un jugador está en el ranking.
 
