@@ -9,6 +9,11 @@
 #include <vector>
 #endif
 
+/** @class categories
+    @brief Representa las categorías de los torneos.
+
+    Permite almacenar las diferentes categorías de torneos, y de esta forma, ofrecer a la clase torneo una manera simple de obtener los puntos que debe sumar a cada jugador.
+*/
 class categories
 {
 private:

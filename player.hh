@@ -10,7 +10,11 @@
 #include <iostream>
 #endif
 
+/** @class player
+    @brief Representa un jugador de tennis.
 
+    Es la unidad más básica del circuito de tennis. Contiene el nombre del jugador y las estadísticas de éste.
+*/
 class player
 {
 private:

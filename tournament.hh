@@ -12,6 +12,11 @@
 #include "BinTree.hh"
 #endif
 
+/** @class tournament
+    @brief Representa un torneo de tennis.
+
+    Contiente las operaciones básicas para poder llevar a cabo la representación de un torneo de tennis, usando como clases base, player y ranking.
+*/
 class tournament
 {
 private:

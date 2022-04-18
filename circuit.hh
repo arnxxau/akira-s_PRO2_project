@@ -11,6 +11,12 @@
 #include <list>
 #endif
 
+/** @class circuit
+    @brief Representa un circuito de tennis.
+
+    Esencialmente es una lista de torneos y es la clase que engloba a todas las demás. Contiene métodos para poder manejar el conjunto de torneos de forma más sencilla. 
+    Operaciones como la lectura de torneos y de jugadores se ofrecen en esta clase.
+*/
 class circuit
 {
 private:

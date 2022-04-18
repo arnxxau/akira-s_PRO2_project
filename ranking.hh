@@ -11,6 +11,12 @@
 #include <vector>
 #endif
 
+/** @class ranking
+    @brief Representa un ranking de jugades de tennis.
+
+    Es la segunda unidad más básica del circuito. Esencialmente es una lista de jugadores con la que se pueden ejecutar diversos métodos para su manejo;
+    como ordenar todo el ranking o bien imprimir cada jugador con cada una de sus propiedades.
+*/
 class ranking
 {
 private:
