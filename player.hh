@@ -19,8 +19,8 @@ class player
 {
 private:
     std::string name;
-    int rank_pos;
-    int total_points;
+    int rank_pos = 0;
+    int total_points = 0;
     struct stadistics
   { 
     int played_matches = 0;

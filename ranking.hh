@@ -9,6 +9,8 @@
 
 #ifndef NO_DIAGRAM
 #include <vector>
+#include <map>
+#include <algorithm>
 #endif
 
 /** @class ranking
@@ -21,9 +23,12 @@ class ranking
 {
 private:
     std::vector<std::pair<player, int > > rank;
-    std::vector<player> players; // lista ordenada con los jugadores ordenados por órden lexográfico para buscar de forma más eficiente
+    std::vector<player> players;
+    int number_of_players = 0;
+    std::map<std::string, std::pair<player, int>> players_map; // lista ordenada con los jugadores ordenados por órden lexográfico para buscar de forma más eficiente
 
     int eff_search(const std::string& name) const;
+    bool order(const player& p1, const player& p2) const;
 public:
 
 
@@ -70,14 +75,14 @@ public:
       \pre El jugador tiene que estar dentro del ranking.
       \post El resultado es el ranking sin el jugador, y los jugadores de r + 1 a P mejoran en una posición.
   */  
-    void remove_player(const std::string name);
+    void remove_player(const std::string& name);
 
   /** @brief Consulta un jugador del ranking por su nombre.
 
       \pre El jugador existe en el ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_name(const std::string name);
+    player get_player_by_name(const std::string& name);
 
   /** @brief Consulta un jugador del ranking por su posición en el ranking.
 
