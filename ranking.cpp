@@ -1,10 +1,12 @@
-#include "ranking.hh";
+#include "ranking.hpp"
 
 ranking::ranking(std::vector<player> players) {
     int v_size = players.size();
     for (int i = 0; i < v_size; ++i)
         add_player(players[i]);
 }
+
+ranking::ranking(){}
 
 int ranking::eff_search(const std::string& name) const {
     int left = 0, right = players.size() - 1;
@@ -29,15 +31,15 @@ void ranking::sort_rank() {
     sort(rank.begin(), rank.end(), order);
 }
 
-bool ranking::order(const player& p1, const player& p2) const{
-    return p1.get_name() > p2.get_name();
+bool ranking::order(const std::pair<player, int >& p1, const std::pair<player, int >& p2) {
+    return p1.first.get_name() > p2.first.get_name();
 }
 
 void ranking::remove_player(const std::string& name) {
     players_map.erase(name);
     int pos = players_map.find(name) -> second.second;
     int v_size = players.size();
-    for (int i = v_size - 1; i >= v_size; --i) {
+    for (int i = v_size - 1; i >= pos; --i) {
         players[i - 1] = players[i];
     }
     players.pop_back();
