@@ -21,7 +21,7 @@ class circuit
 {
 private:
     int n_players = 0, n_tournaments = 0; // n_players -> P, n_tournaments -> T
-    list<tournament> tournaments;
+    map<std::string, tournament> tournaments;
     ranking global_rank;
     categories cat;
 
@@ -34,7 +34,6 @@ public:
       \post El resultado es un circuito vacio con las categorías introducidas.
   */  
     circuit(categories cat);
-    ~circuit();
 
     // tournaments
 

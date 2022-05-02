@@ -23,12 +23,11 @@ class ranking
 {
 private:
     std::vector<std::pair<player, int > > rank;
-    std::vector<player> players;
     int number_of_players = 0;
-    std::map<std::string, std::pair<player, int>> players_map; // lista ordenada con los jugadores ordenados por órden lexográfico para buscar de forma más eficiente
+    std::map<std::string, player> players_map; // lista ordenada con los jugadores ordenados por órden lexográfico para buscar de forma más eficiente
 
     int eff_search(const std::string& name) const;
-    bool order(const player& p1, const player& p2) const;
+    static bool order(const std::pair<player, int >& p1, const std::pair<player, int >& p2);
 public:
 
 
@@ -47,7 +46,6 @@ public:
       \post El resultado es un ranking con todos los jugadores que contenía el vector implícito.
   */  
     ranking(std::vector<player> players);
-    ~ranking();
 
   /** @brief Operación de lectura. 
 
@@ -68,7 +66,7 @@ public:
       \pre El jugador no debe estar dentro del ranking.
       \post El resultado es el mismo ranking pero con el nuevo jugador en la última posición.
   */  
-    void add_player(const player& p);
+    void add_player(player p);
 
   /** @brief Elimina un jugador. 
 

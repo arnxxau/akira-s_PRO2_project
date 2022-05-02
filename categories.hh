@@ -7,6 +7,7 @@
 
 #ifndef NO_DIAGRAM
 #include <vector>
+#include <iostream>
 #endif
 
 /** @class categories
@@ -28,8 +29,7 @@ public:
       \pre <em>cierto<em>
       \post El resultado es una instancia de categorías vacio.
   */  
-    categories();
-    ~categories();
+    // categories();
 
 
   /** @brief Operación de lectura para guardar todas las categorías. Primero lee el número de categorías, después el nivel máximo, 
@@ -52,7 +52,7 @@ public:
       \pre El entero debe existir entre 1 y max_categories.
       \post Retorna el nombre de la categoría introducida.
   */  
-    int get_name(int category) const;
+    std::string get_name(int category) const;
 
  /** @brief Consultora para el nivel de un nombre de una categoría.
 
@@ -82,4 +82,5 @@ public:
   */  
     void print_categories();
 };
+
 #endif

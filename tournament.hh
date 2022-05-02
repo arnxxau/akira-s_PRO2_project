@@ -10,6 +10,7 @@
 
 #ifndef NO_DIAGRAM
 #include "BinTree.hh"
+#include <iostream>
 #endif
 
 /** @class tournament
@@ -23,15 +24,19 @@ private:
     std::string name;
     int difficulty; // tipo de categoría
     ranking local_rank;
-    int n_levels; // número de niveles del torneo
+    // int n_levels; // número de niveles del torneo
     categories cat;
     
-    bool already_played = false;
+    bool played = false;
 
-    BinTree <std::string> pairing_chart;
+    BinTree <int> pairing_chart;
     BinTree <int> results;
 
-    void init_tour();
+    BinTree <int> arborescence(int n_players, int level, int root);
+
+    void preorder_print(BinTree<int> tree);
+
+    void init_tour(ranking global_rank);
 
 public:
 /** @brief Creadora por defecto. 
@@ -41,7 +46,6 @@ public:
       \post El resultado es un torneo con el nombre y la dificultad asignadas.
   */  
     tournament(std::string name, int difficulty, categories cat);
-    ~tournament();
 
   /** @brief Empieza un torneo, confecciona la tabla de emparejamientos e imprime por pantalla la tabla.
 
@@ -49,7 +53,7 @@ public:
       \post El árbol binario "pairing_chart" está completado con la 
             tabla de emparejamientos y el árbol estará impreso por pantalla.
   */
-    void start_tour();
+    void start_tour(ranking global_ranking);
 
   /** @brief Acaba con el torneo, da los resultatos finales y actualiza la ficha de los jugadores.
 
@@ -80,9 +84,7 @@ public:
       \pre <em>cierto</em>
       \post Se ha imprimido el nombre y la categoría por pantalla.
   */  
-    void print_tournament();
+    void print_tournament() const;
 };
-
-
 
 #endif

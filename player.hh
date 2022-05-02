@@ -23,7 +23,7 @@ private:
     int total_points = 0;
     struct stadistics
   { 
-    int played_matches = 0;
+    int played_tours = 0;
     std::pair <int, int> matches_won_lost = {0, 0};
     std::pair <int, int> sets_won_lost = {0, 0};
     std::pair <int, int> games_won_lost = {0, 0};
@@ -38,7 +38,6 @@ public:
       \post El resultado es un jugador con 0 puntos iniciales, todas las estadísticas a 0 junto con su correspondiente nombre.
   */  
     player(std::string name);
-    ~player();
 
 
   /** @brief Modificadora de posición en el rango global. 
@@ -110,7 +109,7 @@ public:
       \pre <em>cierto</em>
       \post Las estadísticas se habrán imprimido por pantalla.
   */  
-    void print_player();
+    void print_player() const;
 };
 
 #endif
