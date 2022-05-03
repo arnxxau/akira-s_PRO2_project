@@ -1,28 +1,27 @@
-OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
+flags = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 #
-G++ = g++
 #
 program.exe: program.o player.o tournament.o ranking.o categories.o circuit.o
-	$(G++) -o program.exe program.o player.o tournament.o ranking.o categories.o circuit.o
+	g++ -o program.x program.o player.o tournament.o ranking.o categories.o circuit.o
 #
 program.o: program.cc
-	$(G++) -c program.cc $(OPCIONS)
+	g++ -c program.cc $(flags)
 #
 player.o: player.cc player.hh
-	$(G++) -c player.cc $(OPCIONS)
+	g++ -c player.cc $(flags)
 #
 tournament.o: tournament.cc tournament.hh
-	$(G++) -c tournament.cc $(OPCIONS)
+	g++ -c tournament.cc $(flags)
 #
 ranking.o: ranking.cc ranking.hh
-	$(G++) -c ranking.cc $(OPCIONS)
+	g++ -c ranking.cc $(flags)
 #
 categories.o: categories.cc categories.hh
-	$(G++) -c categories.cc $(OPCIONS)
+	g++ -c categories.cc $(flags)
 #
 circuit.o: circuit.cc circuit.hh
-	$(G++) -c circuit.cc $(OPCIONS)
+	g++ -c circuit.cc $(flags)
 #
 clean:
 	rm -f *.o
-	rm -f *.exe
+	rm -f *.x

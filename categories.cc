@@ -16,11 +16,11 @@ void categories::read_categories() {
     this -> points_per_level = points_per_level;
 }
 
-int categories::get_points(int category, int level) const {
+int categories::get_points(const int& category, const int& level) const {
     return points_per_level[category - 1][level - 1];
 }
 
-std::string categories::get_name(int category) const {
+std::string categories::get_name(const int& category) const {
     return names[category - 1];
 }
 
@@ -40,7 +40,7 @@ int categories::get_max_lvl() const {
 }
 
 
-void categories::print_categories(){
+void categories::print_categories() const{
     for (int i = 0; i < max_categories; ++i) {
          std::cout << names[i];
          for (int j = 0; j < max_lvl; ++j)

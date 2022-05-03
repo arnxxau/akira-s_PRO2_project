@@ -1,8 +1,6 @@
 #include "circuit.hh"
 
-circuit::circuit(categories cat) {
-    this -> cat = cat;
-}
+circuit::circuit() {}
 
 void circuit::read_tournaments() {
     cin >> n_tournaments;
@@ -10,7 +8,7 @@ void circuit::read_tournaments() {
     int level;
     for (int i = 0; i < n_tournaments; ++i) {
         cin >> name >> level;
-        tournament tour(name, level, cat);
+        tournament tour(name, level);
         tournaments.insert(make_pair(name, tour));
     }
 }
@@ -33,11 +31,11 @@ int circuit::get_n_tournaments() const {
     return n_tournaments;
 }
 
-void circuit::print_tournaments() {
+void circuit::print_tournaments(const categories& c) const {
     std::cout << n_tournaments << std::endl;
     map<std::string, tournament>::const_iterator it = tournaments.begin();
     while (it != tournaments.end()) {
-        it -> second.print_tournament();
+        it -> second.print_tournament(c);
         ++it;
     }
         
@@ -45,30 +43,4 @@ void circuit::print_tournaments() {
 
 bool circuit::exists_tournament(const std::string& name) const {
     return tournaments.end() != tournaments.find(name);
-}
-
-void circuit::read_players() {
-    cin >> n_players;
-    string name;
-    for (int i = 0; i < n_players; ++i) {
-        cin >> name;
-        global_rank.add_player(player(name));
-    }
-}
-
-void circuit::add_player(const player& p) {
-    global_rank.add_player(p);
-    ++n_players;
-}
-
-void circuit::remove_player(const std::string& name) {
-    global_rank.remove_player(name);
-}
-
-ranking circuit::get_global_ranking() {
-    return global_rank;
-}
-
-categories circuit::get_categories() {
-    return cat;
 }

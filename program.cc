@@ -11,114 +11,121 @@
 
 /** @brief Programa principal */
 int main() {
-    string s;
+    std::string s;
+
     categories cat;
     cat.read_categories();
-    circuit circuit(cat);
+    // cout << "cat read" << endl;
 
+
+    circuit circuit;
     circuit.read_tournaments();
-    circuit.read_players();
-    // cout << "hola" << endl;
-    cin >> s;
+
+    // cout << "circuit read" << endl;
+
+    ranking global_ranking;
+    global_ranking.read_players();
+    // cout << "ranking read" << endl;
+
+
+    std::cin >> s;
     while (s != "fin") {
-        // cout << "s ->>>> " << s << endl;
         if (s == "nuevo_jugador" or s == "nj") {
-            string id;
-            cin >> id;
-            cout << "#" << s << ' ' << id << endl;
-            if (not circuit.get_global_ranking().is_player_there(id)) {
-                circuit.add_player(player(id));
-                cout << circuit.get_global_ranking().get_number_of_players() << endl;
+            std::string id;
+            std::cin >> id;
+            std::cout << "#" << s << ' ' << id << std::endl;
+            if (not global_ranking.is_player_there(id)) {
+                global_ranking.add_player(player(id, 0));
+                std::cout << global_ranking.get_number_of_players() << std::endl;
             }
             else
-                cout << "error: ya existe un jugador con ese nombre" << endl;
+                std::cout << "error: ya existe un jugador con ese nombre" << std::endl;
         }
 
         else if (s == "nuevo_torneo" or s == "nt"){
-            string t;
-            cin >> t;
+            std::string t;
+            std::cin >> t;
             int c;
-            cin >> c;
-            cout << "#" << s << ' ' << t << ' ' << c << endl;
+            std::cin >> c;
+            std::cout << "#" << s << ' ' << t << ' ' << c << std::endl;
             if (circuit.exists_tournament(t))
-                cout << "error: ya existe un torneo con ese nombre" << endl;
-            else if (1 > c or c > circuit.get_categories().get_max_categories())
-                cout << "error: la categoria no existe" << endl;
+                std::cout << "error: ya existe un torneo con ese nombre" << std::endl;
+            else if (1 > c or c > cat.get_max_categories())
+                std::cout << "error: la categoria no existe" << std::endl;
             else {
-                circuit.add_tournament(tournament(t, c, cat));
-                cout << circuit.get_n_tournaments() << endl;
+                circuit.add_tournament(tournament(t, c));
+                std::cout << circuit.get_n_tournaments() << std::endl;
             }
         }
 
         else if (s == "baja_jugador" or s == "bj") {
-            string id;
-            cin >> id;
-            cout << "#" << s << ' ' << id << endl;
-            if (circuit.get_global_ranking().is_player_there(id)) {
-                circuit.remove_player(id);
-                cout << circuit.get_global_ranking().get_number_of_players() << endl;
+            std::string id;
+            std::cin >> id;
+            std::cout << "#" << s << ' ' << id << std::endl;
+            if (global_ranking.is_player_there(id)) {
+                global_ranking.remove_player(id);
+                std::cout << global_ranking.get_number_of_players() << std::endl;
             } else 
-                cout << "error: el jugador no existe" << endl;
+                std::cout << "error: el jugador no existe" << std::endl;
         }
 
         else if (s == "baja_torneo" or s == "bt") {
-            string t;
-            cin >> t;
-            cout << "#" << s << ' ' << t << endl;
+            std::string t;
+            std::cin >> t;
+            std::cout << "#" << s << ' ' << t << std::endl;
             if (circuit.exists_tournament(t)) {
                 circuit.remove_tournament(t);
-                cout << circuit.get_n_tournaments() << endl;
+                std::cout << circuit.get_n_tournaments() << std::endl;
             } else 
-                cout << "error: el torneo no existe" << endl;
+                std::cout << "error: el torneo no existe" << std::endl;
         }
 
         else if (s == "iniciar_torneo" or s == "it") {
-            string t;
-            cin >> t;
-            cout << "#" << s << ' ' << t << endl;
-            circuit.get_tournament(t).start_tour(circuit.get_global_ranking());
+            std::string t;
+            std::cin >> t;
+            std::cout << "#" << s << ' ' << t << std::endl;
+            circuit.get_tournament(t).start_tour(global_ranking);
         }
 
         else if (s == "finalizar_torneo" or s == "ft") {
-            cout << "#" << s << endl;
-            string t;
-            cin >> t;
-            circuit.get_tournament(t).end_tour(); // pendiente pautas de impresión !!!!!!!
+            std::cout << "#" << s << std::endl;
+            std::string t;
+            std::cin >> t;
+            circuit.get_tournament(t).end_tour();
         }
 
         else if (s == "listar_ranking" or s == "lr") {
-            cout << "#" << s << endl;
-            // cout << "listando" << endl;
-            circuit.get_global_ranking().print_ranking();
+            std::cout << "#" << s << std::endl;
+            global_ranking.print_ranking();
         }
 
         else if (s == "listar_jugadores" or s == "lj") {
-            cout << "#" << s << endl;
-            cout << circuit.get_global_ranking().get_number_of_players() << endl;
-            circuit.get_global_ranking().print_players();
+            std::cout << "#" << s << std::endl;
+            std::cout << global_ranking.get_number_of_players() << std::endl;
+            global_ranking.print_players();
         }
 
         else if (s == "consultar_jugador" or s == "cj") {
-            string id;
-            cin >> id;
-            cout << "#" << s << ' ' << id << endl;
-            if (circuit.get_global_ranking().is_player_there(id))
-                circuit.get_global_ranking().get_player_by_name(id).print_player();
+            std::string id;
+            std::cin >> id;
+            std::cout << "#" << s << ' ' << id << std::endl;
+            if (global_ranking.is_player_there(id))
+                global_ranking.get_player_by_name(id).print_player();
             else 
-                cout << "error: el jugador no existe" << endl;
+                std::cout << "error: el jugador no existe" << std::endl;
         }
 
         else if (s == "listar_torneos" or s == "lt") {
-            cout << "#" << s << endl;
-            circuit.print_tournaments();
+            std::cout << "#" << s << std::endl;
+            circuit.print_tournaments(cat);
         }
 
         else if (s == "listar_categorias" or s == "lc") {
-            cout << "#" << s << endl;
-            cout << circuit.get_categories().get_max_categories() << ' ' << circuit.get_categories().get_max_lvl() << endl;
-            circuit.get_categories().print_categories();
+            std::cout << "#" << s << std::endl;
+            std::cout << cat.get_max_categories() << ' ' << cat.get_max_lvl() << std::endl;
+            cat.print_categories();
         }
 
-        cin >> s;
+        std::cin >> s;
     }
 }

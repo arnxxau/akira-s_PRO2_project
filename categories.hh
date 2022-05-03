@@ -45,14 +45,14 @@ public:
       \pre <em>cierto</em>
       \post Retorna los puntos que hay que sumar al jugador en función de la categoría y el nivel introducidos.
   */  
-    int get_points(int category, int level) const;
+    int get_points(const int& category, const int& level) const;
 
  /** @brief Consultora para el nombre de la categoría.
 
       \pre El entero debe existir entre 1 y max_categories.
       \post Retorna el nombre de la categoría introducida.
   */  
-    std::string get_name(int category) const;
+    std::string get_name(const int& category) const;
 
  /** @brief Consultora para el nivel de un nombre de una categoría.
 
@@ -80,7 +80,7 @@ public:
       \pre <em>cierto</em>
       \post Se habrán imprimido los datos por pantalla.
   */  
-    void print_categories();
+    void print_categories() const;
 };
 
 #endif

@@ -1,47 +1,43 @@
 #include "tournament.hh"
-#include <list>
-tournament::tournament(std::string name, int difficulty, categories cat) {
+
+tournament::tournament(std::string name, int difficulty) {
     this -> name = name;
     this -> difficulty = difficulty;
-    this -> cat = cat;
 }
 
 
-void tournament::init_tour(ranking global_rank) {
+void tournament::init_tour(const ranking& global_rank) {
     int n_players;
-    cin >> n_players;
+    std::cin >> n_players;
     int position;
     for (int i = 0; i < n_players; ++i) {
-        cin >> position;
-        local_rank.add_player(global_rank.get_player_by_pos(position));
+        std::cin >> position;
+        std::string s = global_rank.get_player_name_by_pos(position);
+        names_with_points.push_back(std::make_pair(s, 0));
     }
 }
 
-BinTree<int> tournament::arborescence(int n_players, int m, int root) {
+BinTree<int> tournament::arborescence(int n_players, int m, int root) const {
     if (n_players < m + 1 - root) return BinTree<int>(root);
     else return BinTree<int>(root, arborescence(n_players, m * 2, root),  arborescence(n_players, m * 2, m + 1 - root));
 }
 
-void tournament::preorder_print(BinTree<int> tree) {
-    if (tree.left().empty() and tree.right().empty()) cout << tree.value() << '.' << local_rank.get_player_by_pos(tree.value()).get_name();
+void tournament::preorder_print(const BinTree<int>& tree) {
+    if (tree.left().empty() and tree.right().empty()) std::cout << tree.value() << '.' << names_with_points[tree.value() - 1].first;
     else {
-        cout << '(';
+        std::cout << '(';
         preorder_print(tree.left());
-        cout << ' ';
+        std::cout << ' ';
         preorder_print(tree.right());
-        cout << ')';
+        std::cout << ')';
     }
 }
 
-void tournament::start_tour(ranking global_ranking) {
+void tournament::start_tour(const ranking& global_ranking) {
     init_tour(global_ranking);
-    // cout << "inicializado" << endl;
-    local_rank.sort_rank();
-    // cout << "sorteado" << endl;
-    pairing_chart = arborescence(local_rank.get_number_of_players(), 2, 1);
-    
+    pairing_chart = arborescence(names_with_points.size(), 2, 1);
     preorder_print(pairing_chart);
-    cout << endl;
+    std::cout << std::endl;
 }
 
 bool tournament::already_played() const {
@@ -49,13 +45,13 @@ bool tournament::already_played() const {
 }
 
 void tournament::end_tour() {
-    std::cout << "test" << std::endl;
+    std::cout << "to be done" << std::endl;
 }
 
 std::string tournament::get_name() const {
     return name;
 }
 
-void tournament::print_tournament() const {
-    std::cout << name << ' ' << cat.get_name(difficulty) << endl;
+void tournament::print_tournament(const categories& c) const {
+    std::cout << name << ' ' << c.get_name(difficulty) << std::endl;
 }

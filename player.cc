@@ -1,7 +1,8 @@
 #include "player.hh"
 
-player::player(std::string name) {
+player::player(const std::string name, const int& rank_pos) {
     this -> name = name;
+    this -> rank_pos = rank_pos;
 }
 
 std::string player::get_name() const {
@@ -44,16 +45,9 @@ void player::modify_total_points(int points) {
 }
 
 void player::print_player() const {
-    std::cout << name << " Rk:" << rank_pos << " Ps:" << total_points << " Ts:" << player_stats.played_tours << " WM:" << player_stats.matches_won_lost.first
-                << " LM:" << player_stats.matches_won_lost.second << " WS:" << player_stats.sets_won_lost.first << " LS:" << 
-                        player_stats.sets_won_lost.second << " WG:" << player_stats.games_won_lost.first << " LG:" <<
-                                player_stats.games_won_lost.second << std::endl;
-/*
-    std::cout << "games won and lost -> " << player_stats.games_won_lost.first 
-                << player_stats.games_won_lost.second << std::endl;
-    std::cout << "sets won and lost -> " << player_stats.sets_won_lost.first 
-            << player_stats.sets_won_lost.second << std::endl;
-    std::cout << "matches won and lost -> " << player_stats.matches_won_lost.first 
-                << player_stats.matches_won_lost.second << std::endl;
-*/       
+    std::cout << name << " Rk:" << rank_pos << " Ps:" << total_points 
+    << " Ts:" << player_stats.played_tours << " WM:" << player_stats.matches_won_lost.first
+    << " LM:" << player_stats.matches_won_lost.second << " WS:" << player_stats.sets_won_lost.first 
+    << " LS:" << player_stats.sets_won_lost.second << " WG:" << player_stats.games_won_lost.first 
+    << " LG:" << player_stats.games_won_lost.second << std::endl;
 }

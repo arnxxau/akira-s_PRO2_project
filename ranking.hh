@@ -22,12 +22,14 @@
 class ranking
 {
 private:
-    std::vector<std::pair<player, int > > rank;
+    std::vector<std::pair<std::string, int > > rank;
+    std::map<std::string, player> players_map;
+    
     int number_of_players = 0;
-    std::map<std::string, player> players_map; // lista ordenada con los jugadores ordenados por órden lexográfico para buscar de forma más eficiente
 
-    int eff_search(const std::string& name) const;
-    static bool order(const std::pair<player, int >& p1, const std::pair<player, int >& p2);
+    int linear_search(const std::string& name) const;
+    static bool order(const std::pair<std::string, int >& p1, const std::pair<std::string, int >& p2);
+
 public:
 
 
@@ -68,6 +70,9 @@ public:
   */  
     void add_player(player p);
 
+
+    void read_players();
+
   /** @brief Elimina un jugador. 
 
       \pre El jugador tiene que estar dentro del ranking.
@@ -89,6 +94,8 @@ public:
   */
     player get_player_by_pos(int position);
 
+    std::string get_player_name_by_pos(int position) const;
+
   /** @brief Consulta si un jugador está en el ranking.
 
       \pre El string name tiene que ser un identificador de un jugador válido.
@@ -101,14 +108,14 @@ public:
       \pre <em>cierto</em>
       \post Los datos se habrán imprimido por pantalla.
   */  
-    void print_ranking();
+    void print_ranking() const;
 
   /** @brief Imprime cada jugador en orden lexográfico creciente.
 
       \pre <em>cierto</em>
       \post Los datos se habrán imprimido por pantalla.
   */  
-    void print_players();
+    void print_players() const;
 
   /** @brief Consulta el número de jugadores.
 

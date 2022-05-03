@@ -6,7 +6,6 @@
 #define AKIRA_PLAYER_HH
 
 #ifndef NO_DIAGRAM
-#include <string>
 #include <iostream>
 #endif
 
@@ -37,7 +36,7 @@ public:
       \pre <em>cierto</em>
       \post El resultado es un jugador con 0 puntos iniciales, todas las estadísticas a 0 junto con su correspondiente nombre.
   */  
-    player(std::string name);
+    player(const std::string name, const int& rank_pos);
 
 
   /** @brief Modificadora de posición en el rango global. 

@@ -23,20 +23,19 @@ class tournament
 private:
     std::string name;
     int difficulty; // tipo de categoría
-    ranking local_rank;
-    // int n_levels; // número de niveles del torneo
-    categories cat;
     
     bool played = false;
+
+    std::vector<std::pair<std::string, int > > names_with_points;
 
     BinTree <int> pairing_chart;
     BinTree <int> results;
 
-    BinTree <int> arborescence(int n_players, int level, int root);
+    BinTree <int> arborescence(int n_players, int level, int root) const;
 
-    void preorder_print(BinTree<int> tree);
+    void preorder_print(const BinTree<int>& tree);
 
-    void init_tour(ranking global_rank);
+    void init_tour(const ranking& global_rank);
 
 public:
 /** @brief Creadora por defecto. 
@@ -45,7 +44,7 @@ public:
       \pre Debe ser una categoría válida entre 1 y C.
       \post El resultado es un torneo con el nombre y la dificultad asignadas.
   */  
-    tournament(std::string name, int difficulty, categories cat);
+    tournament(std::string name, int difficulty);
 
   /** @brief Empieza un torneo, confecciona la tabla de emparejamientos e imprime por pantalla la tabla.
 
@@ -53,7 +52,7 @@ public:
       \post El árbol binario "pairing_chart" está completado con la 
             tabla de emparejamientos y el árbol estará impreso por pantalla.
   */
-    void start_tour(ranking global_ranking);
+    void start_tour(const ranking& global_ranking);
 
   /** @brief Acaba con el torneo, da los resultatos finales y actualiza la ficha de los jugadores.
 
@@ -84,7 +83,7 @@ public:
       \pre <em>cierto</em>
       \post Se ha imprimido el nombre y la categoría por pantalla.
   */  
-    void print_tournament() const;
+    void print_tournament(const categories& c) const;
 };
 
 #endif
