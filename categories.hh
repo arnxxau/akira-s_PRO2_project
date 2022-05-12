@@ -29,7 +29,7 @@ public:
       \pre <em>cierto<em>
       \post El resultado es una instancia de categorías vacio.
   */  
-    // categories();
+    categories();
 
 
   /** @brief Operación de lectura para guardar todas las categorías. Primero lee el número de categorías, después el nivel máximo, 

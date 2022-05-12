@@ -1,5 +1,7 @@
 #include "categories.hh"
 
+categories::categories(){}
+
 void categories::read_categories() {
     std::cin >> max_categories >> max_lvl;
     std::vector<std::string> names(max_categories);

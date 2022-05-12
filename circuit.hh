@@ -54,14 +54,13 @@ public:
       \pre El torneo existe en la lista
       \post El resultado es la misma lista pero con n_tournaments - 1 y sin el torneo del parámetro.
   */  
-    void remove_tournament(const std::string& name);
+    void remove_tournament(const std::string& name, ranking& global_ranking);
 
-  /** @brief Operación de consulta para torneos. 
+    void remove_player_tour(const std::string& name);
 
-      \pre El torneo existe en la lista.
-      \post Retorna el torneo con el nombre implícito de la función.
-  */  
-    tournament get_tournament(const std::string& name);
+    void start_tour(const std::string& name, ranking& global_rank);
+
+    void end_tour(const std::string& name, ranking& global_rank, categories cat);
 
   /** @brief Operación de consulta. 
 

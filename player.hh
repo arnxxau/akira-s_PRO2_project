@@ -53,27 +53,9 @@ public:
   */  
     void modify_total_points(int points);
 
+    void modify_stats(int points, int wm, int lm, int ws, int ls, int wg, int lg);
 
-  /** @brief Modificadora de los partidos ganados y perdidos del jugador. 
-
-      \pre Los enteros deben ser positivos.
-      \post El resultado es el jugador con las estadísticas modificadas.
-  */  
-    void modifiy_matches(int won, int lost);
-
-  /** @brief Modificadora de los sets ganados y perdidos del jugador. 
-
-      \pre Los enteros deben ser positivos.
-      \post El resultado es el jugador con las estadísticas modificadas.
-  */  
-    void modifiy_sets(int won, int lost);
-
-  /** @brief Modificadora de los juegos ganados y perdidos del jugador. 
-
-      \pre Los enteros deben ser positivos.
-      \post El resultado es el jugador con las estadísticas modificadas.
-  */  
-    void modifiy_games(int won, int lost);
+    void increase_tour();
 
   /** @brief Operación de consulta de posición. 
 

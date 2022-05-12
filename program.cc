@@ -15,18 +15,12 @@ int main() {
 
     categories cat;
     cat.read_categories();
-    // cout << "cat read" << endl;
-
-
+    
     circuit circuit;
     circuit.read_tournaments();
 
-    // cout << "circuit read" << endl;
-
     ranking global_ranking;
     global_ranking.read_players();
-    // cout << "ranking read" << endl;
-
 
     std::cin >> s;
     while (s != "fin") {
@@ -63,6 +57,7 @@ int main() {
             std::cin >> id;
             std::cout << "#" << s << ' ' << id << std::endl;
             if (global_ranking.is_player_there(id)) {
+                circuit.remove_player_tour(id);
                 global_ranking.remove_player(id);
                 std::cout << global_ranking.get_number_of_players() << std::endl;
             } else 
@@ -74,7 +69,7 @@ int main() {
             std::cin >> t;
             std::cout << "#" << s << ' ' << t << std::endl;
             if (circuit.exists_tournament(t)) {
-                circuit.remove_tournament(t);
+                circuit.remove_tournament(t, global_ranking);
                 std::cout << circuit.get_n_tournaments() << std::endl;
             } else 
                 std::cout << "error: el torneo no existe" << std::endl;
@@ -84,14 +79,15 @@ int main() {
             std::string t;
             std::cin >> t;
             std::cout << "#" << s << ' ' << t << std::endl;
-            circuit.get_tournament(t).start_tour(global_ranking);
+            circuit.start_tour(t, global_ranking);
         }
 
         else if (s == "finalizar_torneo" or s == "ft") {
-            std::cout << "#" << s << std::endl;
+            std::cout << "#" << s << ' ';
             std::string t;
             std::cin >> t;
-            circuit.get_tournament(t).end_tour();
+            std::cout << t << std::endl;
+            circuit.end_tour(t, global_ranking, cat);
         }
 
         else if (s == "listar_ranking" or s == "lr") {

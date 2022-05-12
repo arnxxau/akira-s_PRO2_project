@@ -22,13 +22,13 @@
 class ranking
 {
 private:
-    std::vector<std::pair<std::string, int > > rank;
+    std::vector<std::map<std::string, player>::iterator > rank;
     std::map<std::string, player> players_map;
     
     int number_of_players = 0;
 
-    int linear_search(const std::string& name) const;
-    static bool order(const std::pair<std::string, int >& p1, const std::pair<std::string, int >& p2);
+    // int linear_search(const std::string& name) const;
+    static bool order(const std::map<std::string, player>::iterator& p1, const std::map<std::string, player>::iterator& p2);
 
 public:
 
@@ -85,16 +85,21 @@ public:
       \pre El jugador existe en el ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_name(const std::string& name);
+    player get_player_by_name(const std::string& name) const;
 
   /** @brief Consulta un jugador del ranking por su posición en el ranking.
 
       \pre El entero es una posición válida del ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_pos(int position);
+    player get_player_by_pos(int position) const;
 
-    std::string get_player_name_by_pos(int position) const;
+    void modify_stats(const std::string& name, int points, 
+        int wm, int lm, int ws, int ls, int wg, int lg);
+
+    void increase_player_tours(const std::string& name);
+
+    void remove_points(const std::string& name, int points);
 
   /** @brief Consulta si un jugador está en el ranking.
 

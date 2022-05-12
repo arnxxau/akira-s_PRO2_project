@@ -3,11 +3,11 @@
 circuit::circuit() {}
 
 void circuit::read_tournaments() {
-    cin >> n_tournaments;
-    string name;
+    std::cin >> n_tournaments;
+    std::string name;
     int level;
     for (int i = 0; i < n_tournaments; ++i) {
-        cin >> name >> level;
+        std::cin >> name >> level;
         tournament tour(name, level);
         tournaments.insert(make_pair(name, tour));
     }
@@ -18,13 +18,27 @@ void circuit::add_tournament(const tournament& tour) {
     ++n_tournaments;
 }
 
-void circuit::remove_tournament(const std::string& name) {
+void circuit::remove_tournament(const std::string& name, ranking& global_ranking) {
+    tournaments.find(name) -> second.remove_points(global_ranking);
+    global_ranking.sort_rank();
     tournaments.erase(name);
     --n_tournaments;
 }
 
-tournament circuit::get_tournament(const std::string& name) {
-    return tournaments.find(name) -> second; 
+void circuit::remove_player_tour(const std::string& name) {
+    std::map<std::string, tournament>::iterator it = tournaments.begin();
+    while (it != tournaments.end()) {
+        it -> second.remove_player(name);
+        ++it;
+    }   
+}
+
+void circuit::start_tour(const std::string& name, ranking& glbl) {
+    tournaments.find(name) ->second.start_tour(glbl);
+}
+
+void circuit::end_tour(const std::string& name, ranking& glbl, categories cat) {
+    tournaments.find(name) ->second.end_tour(cat, glbl);
 }
 
 int circuit::get_n_tournaments() const {
@@ -33,7 +47,7 @@ int circuit::get_n_tournaments() const {
 
 void circuit::print_tournaments(const categories& c) const {
     std::cout << n_tournaments << std::endl;
-    map<std::string, tournament>::const_iterator it = tournaments.begin();
+    std::map<std::string, tournament>::const_iterator it = tournaments.begin();
     while (it != tournaments.end()) {
         it -> second.print_tournament(c);
         ++it;

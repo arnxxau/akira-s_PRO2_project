@@ -6,6 +6,7 @@
 #define AKIRA_TOUR_HH
 
 #include "ranking.hh"
+#include "match.hh"
 #include "categories.hh"
 
 #ifndef NO_DIAGRAM
@@ -23,19 +24,20 @@ class tournament
 private:
     std::string name;
     int difficulty; // tipo de categoría
-    
     bool played = false;
-
     std::vector<std::pair<std::string, int > > names_with_points;
-
+    std::vector<std::pair<std::string, int > > history;
     BinTree <int> pairing_chart;
-    BinTree <int> results;
+    BinTree <match> results;
 
     BinTree <int> arborescence(int n_players, int level, int root) const;
-
-    void preorder_print(const BinTree<int>& tree);
-
-    void init_tour(const ranking& global_rank);
+    BinTree<match> winner_arborescence(BinTree<int> pairing_copy, int level,
+        const categories& cat, ranking& global_rank);
+    void print_pairing_chart(const BinTree<int>& tree);
+    void print_results(const BinTree<match>& tree);
+    void init_tour(ranking& global_rank);
+    static bool order(const std::pair<std::string, int >& p1, 
+          const std::pair<std::string, int >& p2);
 
 public:
 /** @brief Creadora por defecto. 
@@ -52,7 +54,11 @@ public:
       \post El árbol binario "pairing_chart" está completado con la 
             tabla de emparejamientos y el árbol estará impreso por pantalla.
   */
-    void start_tour(const ranking& global_ranking);
+    void start_tour(ranking& global_rank);
+
+    void remove_points(ranking& global_rank);
+
+    void remove_player(const std::string name);
 
   /** @brief Acaba con el torneo, da los resultatos finales y actualiza la ficha de los jugadores.
 
@@ -61,15 +67,7 @@ public:
       \post El árbol binario "results" está lleno, los puntos y las estadísticas de los jugadores actualizadas, 
             y already_played pasa a ser verdadero. Imprime también el ranking local sin reordenar.
   */
-    void end_tour();
-
-
-  /** @brief Consulta si este torneo es la primera vez que se celebra o no.
-
-      \pre <em> cierto <em>
-      \post Retorna verdadero si el torneo ya ha sido jugado previamente y falso si esta es la primera edición que se juega.
-  */
-    bool already_played() const;
+    void end_tour(const categories& cat, ranking& global_rank);
 
   /** @brief Consulta el identificador del torneo
 
