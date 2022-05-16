@@ -20,6 +20,12 @@ private:
     std::string name;
     int rank_pos = 0;
     int total_points = 0;
+
+    int played_tours = 0;
+    std::pair <int, int> matches_won_lost = {0, 0};
+    std::pair <int, int> sets_won_lost = {0, 0};
+    std::pair <int, int> games_won_lost = {0, 0};
+
     struct stadistics
   { 
     int played_tours = 0;
@@ -36,7 +42,7 @@ public:
       \pre <em>cierto</em>
       \post El resultado es un jugador con 0 puntos iniciales, todas las estadísticas a 0 junto con su correspondiente nombre.
   */  
-    player(const std::string name, const int& rank_pos);
+    player(const std::string name, int rank_pos);
 
 
   /** @brief Modificadora de posición en el rango global. 
@@ -77,13 +83,6 @@ public:
       \post Retorna los puntos totales del jugador.
   */  
     int get_total_points() const;
-
-  /** @brief Operación de consulta de estadísticas.
-
-      \pre <em>cierto</em>
-      \post Retorna las estadísticas del jugador.
-  */  
-    stadistics get_stadistics() const;
 
   /** @brief Imprime el nombre, la posición en el ranking, los puntos y el resto de estadísticas.
 

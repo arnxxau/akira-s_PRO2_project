@@ -29,7 +29,7 @@ int main() {
             std::cin >> id;
             std::cout << "#" << s << ' ' << id << std::endl;
             if (not global_ranking.is_player_there(id)) {
-                global_ranking.add_player(player(id, 0));
+                global_ranking.add_player(id);
                 std::cout << global_ranking.get_number_of_players() << std::endl;
             }
             else

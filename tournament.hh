@@ -30,12 +30,17 @@ private:
     BinTree <int> pairing_chart;
     BinTree <match> results;
 
-    BinTree <int> arborescence(int n_players, int level, int root) const;
-    BinTree<match> winner_arborescence(BinTree<int> pairing_copy, int level,
-        const categories& cat, ranking& global_rank);
+    BinTree <int> create_pairing_chart(int n_players, int level, int root) const;
+
+    BinTree<match> compute_results(const BinTree<int>& pairing, int level,
+        const categories& c, ranking& global_rank);
+
     void print_pairing_chart(const BinTree<int>& tree);
+
     void print_results(const BinTree<match>& tree);
+
     void init_tour(ranking& global_rank);
+
     static bool order(const std::pair<std::string, int >& p1, 
           const std::pair<std::string, int >& p2);
 
@@ -46,7 +51,7 @@ public:
       \pre Debe ser una categoría válida entre 1 y C.
       \post El resultado es un torneo con el nombre y la dificultad asignadas.
   */  
-    tournament(std::string name, int difficulty);
+    tournament(const std::string& name, int difficulty);
 
   /** @brief Empieza un torneo, confecciona la tabla de emparejamientos e imprime por pantalla la tabla.
 
@@ -54,11 +59,13 @@ public:
       \post El árbol binario "pairing_chart" está completado con la 
             tabla de emparejamientos y el árbol estará impreso por pantalla.
   */
-    void start_tour(ranking& global_rank);
+    
 
     void remove_points(ranking& global_rank);
 
-    void remove_player(const std::string name);
+    void remove_player(const std::string& name);
+
+    void start_tour(ranking& global_rank);
 
   /** @brief Acaba con el torneo, da los resultatos finales y actualiza la ficha de los jugadores.
 
@@ -68,6 +75,12 @@ public:
             y already_played pasa a ser verdadero. Imprime también el ranking local sin reordenar.
   */
     void end_tour(const categories& cat, ranking& global_rank);
+
+    void update_stats(const match& m, int level, const categories& cat, ranking& global_rank);
+
+    void print_match(const match& m) const;
+
+    
 
   /** @brief Consulta el identificador del torneo
 

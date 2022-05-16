@@ -27,7 +27,6 @@ private:
     
     int number_of_players = 0;
 
-    // int linear_search(const std::string& name) const;
     static bool order(const std::map<std::string, player>::iterator& p1, const std::map<std::string, player>::iterator& p2);
 
 public:
@@ -41,14 +40,6 @@ public:
   */  
     ranking();
     
-    /** @brief Creadora opcional. 
-
-      Se ejecuta al pasar como parámetro un vector de jugadores.
-      \pre Los jugadores del vector deben ser únicos.
-      \post El resultado es un ranking con todos los jugadores que contenía el vector implícito.
-  */  
-    ranking(std::vector<player> players);
-
   /** @brief Operación de lectura. 
 
       \pre <em>cierto</em>
@@ -68,7 +59,7 @@ public:
       \pre El jugador no debe estar dentro del ranking.
       \post El resultado es el mismo ranking pero con el nuevo jugador en la última posición.
   */  
-    void add_player(player p);
+    void add_player(const std::string& name);
 
 
     void read_players();

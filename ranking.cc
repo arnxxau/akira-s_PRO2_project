@@ -1,29 +1,11 @@
 #include "ranking.hh"
 
-ranking::ranking(std::vector<player> players) {
-    int v_size = players.size();
-    for (int i = 0; i < v_size; ++i)
-        add_player(players[i]);
-}
-
 ranking::ranking(){}
 
-/*
-int ranking::linear_search(const std::string& name) const {
-    for (int i = 0; i < number_of_players; ++i) {
-        if (rank[i].first == name)
-            return i;
-    }
-    return -1;
-}
-*/
-
-void ranking::add_player(player p) {
-    std::string s = p.get_name();
-    p.modify_rank_position(number_of_players + 1);
-    ++number_of_players;
-    players_map.insert(std::make_pair(p.get_name(), p));
-    rank.push_back(players_map.find(s));
+void ranking::add_player(const std::string& name) {
+    player p (name, ++number_of_players);
+    players_map.insert(std::make_pair(name, p));
+    rank.push_back(players_map.find(name));
 }
 
 void ranking::read_players() {
@@ -32,8 +14,15 @@ void ranking::read_players() {
     for (int i = 0; i < number_of_players; ++i) {
         std::cin >> name;
         players_map.insert(std::make_pair(name, player(name, i + 1)));
-        rank.push_back(players_map.find(name));
     }
+
+    std::map<std::string, player>::iterator it =  players_map.begin();
+    std::vector<std::map<std::string, player>::iterator > r (number_of_players);
+    while (it != players_map.end()) {
+        r[it -> second.get_rank_position() - 1] = it;
+        ++it;
+    }
+    rank = r;
 }
 
 void ranking::sort_rank() {
@@ -48,7 +37,8 @@ void ranking::increase_player_tours(const std::string& name) {
     players_map.find(name) -> second.increase_tour();
 }
 
-bool ranking::order(const std::map<std::string, player>::iterator& p1, const std::map<std::string, player>::iterator& p2) {
+bool ranking::order(const std::map<std::string, player>::iterator& p1, 
+        const std::map<std::string, player>::iterator& p2) {
     if (p1 -> second.get_total_points() != p2 -> second.get_total_points()) 
         return p1 -> second.get_total_points() > p2 -> second.get_total_points();
     else 
@@ -95,7 +85,8 @@ bool ranking::is_player_there(const std::string& name) const {
 
 void ranking::print_ranking() const {
     for (int i = 0; i < number_of_players; ++i)
-        std::cout << i + 1 << ' ' << rank[i] -> second.get_name() << ' ' << rank[i] -> second.get_total_points() << std::endl;
+        std::cout << i + 1 << ' ' << rank[i] -> second.get_name() 
+                << ' ' << rank[i] -> second.get_total_points() << std::endl;
 }
 
 void ranking::print_players() const {

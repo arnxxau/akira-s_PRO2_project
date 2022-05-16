@@ -33,12 +33,12 @@ void circuit::remove_player_tour(const std::string& name) {
     }   
 }
 
-void circuit::start_tour(const std::string& name, ranking& glbl) {
-    tournaments.find(name) ->second.start_tour(glbl);
+void circuit::start_tour(const std::string& name, ranking& global_rank) {
+    tournaments.find(name) -> second.start_tour(global_rank);
 }
 
-void circuit::end_tour(const std::string& name, ranking& glbl, categories cat) {
-    tournaments.find(name) ->second.end_tour(cat, glbl);
+void circuit::end_tour(const std::string& name, ranking& global_rank, const categories& c) {
+    tournaments.find(name) -> second.end_tour(c, global_rank);
 }
 
 int circuit::get_n_tournaments() const {
@@ -52,7 +52,6 @@ void circuit::print_tournaments(const categories& c) const {
         it -> second.print_tournament(c);
         ++it;
     }
-        
 }
 
 bool circuit::exists_tournament(const std::string& name) const {

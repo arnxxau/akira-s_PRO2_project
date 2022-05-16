@@ -60,7 +60,7 @@ public:
 
     void start_tour(const std::string& name, ranking& global_rank);
 
-    void end_tour(const std::string& name, ranking& global_rank, categories cat);
+    void end_tour(const std::string& name, ranking& global_rank, const categories& cat);
 
   /** @brief Operación de consulta. 
 
