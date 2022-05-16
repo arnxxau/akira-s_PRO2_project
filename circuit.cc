@@ -1,3 +1,7 @@
+/** @file circuit.cc
+    @brief Código de la clase circuit 
+*/
+
 #include "circuit.hh"
 
 circuit::circuit() {}

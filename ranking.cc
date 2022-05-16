@@ -1,3 +1,7 @@
+/** @file ranking.cc
+    @brief Código de la clase ranking 
+*/
+
 #include "ranking.hh"
 
 ranking::ranking(){}

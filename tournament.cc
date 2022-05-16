@@ -1,3 +1,7 @@
+/** @file tournament.cc
+    @brief Código de la clase tournament 
+*/
+
 #include "tournament.hh"
 
 tournament::tournament(const std::string& name, int difficulty) {
@@ -38,7 +42,7 @@ BinTree<match> tournament::compute_results(const BinTree<int>& pairing, int leve
     return BinTree<match>(match(pairing.value()));
 }
 
-void tournament::print_pairing_chart(const BinTree<int>& tree) {
+void tournament::print_pairing_chart(const BinTree<int>& tree) const {
     if (tree.left().empty() and tree.right().empty()) std::cout << tree.value() << '.' << names_with_points[tree.value() - 1].first;
     else {
         std::cout << '(';
@@ -49,7 +53,7 @@ void tournament::print_pairing_chart(const BinTree<int>& tree) {
     }
 }
 
-void tournament::print_results(const BinTree<match>& tree) {
+void tournament::print_results(const BinTree<match>& tree) const {
     if (not tree.value().is_empty()) {
         std::cout << '(';
         print_match(tree.value());
@@ -74,13 +78,12 @@ void tournament::start_tour(ranking& global_ranking) {
     pairing_chart = create_pairing_chart(names_with_points.size(), 2, 1);
     print_pairing_chart(pairing_chart);
     std::cout << std::endl;
-    played = true;
 }
 
-void tournament::end_tour(const categories& cat, ranking& global_ranking) {
-    results = compute_results(pairing_chart, 1, cat, global_ranking);
+void tournament::end_tour(const categories& c, ranking& global_ranking) {
+    results = compute_results(pairing_chart, 1, c, global_ranking);
     print_results(results);
-    std::cout << std:: endl;
+    std::cout << std::endl;
 
     remove_points(global_ranking);
     int v_size = names_with_points.size();
@@ -90,6 +93,7 @@ void tournament::end_tour(const categories& cat, ranking& global_ranking) {
             std::cout << i + 1 << '.' << names_with_points[i].first 
                         << ' '<< names_with_points[i].second << std::endl;
     }
+    played = true;
     history = names_with_points;
     global_ranking.sort_rank();
 }
@@ -113,31 +117,26 @@ void tournament::remove_player(const std::string& name) {
     }
 }
 
-bool tournament::order(const std::pair<std::string, int >& p1, 
-          const std::pair<std::string, int >& p2) {
-    return p1.second > p2.second;
-}
-
-void tournament::update_stats(const match& m, int level, const categories& cat, ranking& global_rank) {
+void tournament::update_stats(const match& m, int level, const categories& c, ranking& global_rank) {
     int left_p , right_p;
 
     if (level != 1) {
         if (m.get_bool()) {
             left_p = 0;
-            right_p = cat.get_points(difficulty, level + 1);
+            right_p = c.get_points(difficulty, level + 1);
         }
         else {
-            left_p = cat.get_points(difficulty, level + 1);
+            left_p = c.get_points(difficulty, level + 1);
             right_p = 0;
         }
     } else {
         if (m.get_bool()) {
-            left_p = cat.get_points(difficulty, level);
-            right_p = cat.get_points(difficulty, level + 1);
+            left_p = c.get_points(difficulty, level);
+            right_p = c.get_points(difficulty, level + 1);
         }
         else {
-            left_p = cat.get_points(difficulty, level + 1);
-            right_p = cat.get_points(difficulty, level);
+            left_p = c.get_points(difficulty, level + 1);
+            right_p = c.get_points(difficulty, level);
         }
     }
 

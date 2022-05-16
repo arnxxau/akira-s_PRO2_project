@@ -1,3 +1,7 @@
+/** @file match.cc
+    @brief Código de la clase match 
+*/
+
 #include "match.hh"
 
 match::match(const std::string& input, int left_pos, int right_pos){

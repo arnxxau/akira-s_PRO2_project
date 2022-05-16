@@ -1,5 +1,5 @@
 /** @file categories.hh
-    @brief Especificaciones de tournament
+    @brief Especificaciones de categories
 */
 
 #ifndef AKIRA_CATEGORIES_HH
@@ -18,9 +18,13 @@
 class categories
 {
 private:
+    /** @brief Indica la cantidad de niveles máximo que puede poseer un torneo. */
     int max_lvl;
-    int max_categories;
+    /** @brief Indica el número de categorías del circuito. */
+    int n_categories;
+    /** @brief Nombre de las categorías ordenadas por niveles en orden creciente. */
     std::vector<std::string> names;
+    /** @brief Matriz con los puntos por nivel. Cada fila corresponde a los puntos de cada categoría. */
     std::vector<std::vector<int> > points_per_level;
 public:
 /** @brief Creadora por defecto. 
@@ -35,7 +39,7 @@ public:
   /** @brief Operación de lectura para guardar todas las categorías. Primero lee el número de categorías, después el nivel máximo, 
    *    y a continuación, los puntos por cada categoría y nivel junto con su nombre.
 
-      \pre El número total de puntos debe ser max_lvl * max_categories
+      \pre El número total de puntos debe ser max_lvl * n_categories
       \post El resultado son todas las categorías con sus nombres y su respectivos datos almacenados.
   */  
     void read_categories();
@@ -49,7 +53,7 @@ public:
 
  /** @brief Consultora para el nombre de la categoría.
 
-      \pre El entero debe existir entre 1 y max_categories.
+      \pre El entero debe existir entre 1 y n_categories.
       \post Retorna el nombre de la categoría introducida.
   */  
     std::string get_name(int category) const;
@@ -71,9 +75,9 @@ public:
  /** @brief Consultora para la cantidad de categorías.
 
       \pre <em>cierto<em>
-      \post Retorna el número de categorías existente
+      \post Retorna el número de categorías existente.
   */ 
-    int get_max_categories() const;
+    int get_n_categories() const;
 
   /** @brief Imprime por orden creciente de identificador, el nombre y la tabla de putnos por niveles de cada categoría.
 

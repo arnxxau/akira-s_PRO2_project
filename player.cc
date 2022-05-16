@@ -1,3 +1,7 @@
+/** @file player.cc
+    @brief Código de la clase player 
+*/
+
 #include "player.hh"
 
 player::player(const std::string name, int rank_pos) {

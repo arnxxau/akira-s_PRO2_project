@@ -17,37 +17,36 @@
 class player
 {
 private:
+    /** @brief Nombre del jugador. */
     std::string name;
+    /** @brief Posición del jugador en el ranking global. */
     int rank_pos = 0;
+    /** @brief Total de puntos del jugador en el ranking global. */
     int total_points = 0;
 
+    // estadísticas jugador
+    /** @brief Número de torneos jugados. */
     int played_tours = 0;
+    /** @brief Par de enteros que representa los partidos ganados (first) y perdidos (second) del jugador. */
     std::pair <int, int> matches_won_lost = {0, 0};
+    /** @brief Par de enteros que representa los sets ganados (first) y perdidos (second) del jugador. */
     std::pair <int, int> sets_won_lost = {0, 0};
+    /** @brief Par de enteros que representa los juegos ganados (first) y perdidos (second) del jugador. */
     std::pair <int, int> games_won_lost = {0, 0};
-
-    struct stadistics
-  { 
-    int played_tours = 0;
-    std::pair <int, int> matches_won_lost = {0, 0};
-    std::pair <int, int> sets_won_lost = {0, 0};
-    std::pair <int, int> games_won_lost = {0, 0};
-  };
-    stadistics player_stats;
     
 public:
   /** @brief Creadora por defecto. 
 
       Se ejecuta automáticamente al declarar un jugador.
-      \pre <em>cierto</em>
-      \post El resultado es un jugador con 0 puntos iniciales, todas las estadísticas a 0 junto con su correspondiente nombre.
+      \pre La posición del ranking debe estar entre 1 y el número de jugadores totales del circuito.
+      \post El resultado es un jugador con 0 puntos iniciales y todas las estadísticas a 0, junto con su correspondiente nombre y posición del ranking.
   */  
     player(const std::string name, int rank_pos);
 
 
   /** @brief Modificadora de posición en el rango global. 
 
-      \pre <em>cierto</em>
+      \pre La posición del ranking debe estar entre 1 y el número de jugadores totales del circuito.
       \post El resultado es el jugador con la nueva posición asignada.
   */  
     void modify_rank_position(int rank_pos);
@@ -59,9 +58,24 @@ public:
   */  
     void modify_total_points(int points);
 
+  /** @brief Modificadora de las estadísticas del jugador.
+   *  Cada parámetro corresponde a una estadísticas, la lista de correspondencias es la siguiente:
+   *    points -> puntos totales jugador, wm -> partidos ganados, lm -> partidos perdidos, 
+   *    ws -> sets ganados, ls -> sets perdidos, wg -> juegos ganados, lg -> juegos perdidos
+
+      \pre Todos los enteros deben ser positivos.
+      \post El resultado es el jugador con las estadísticas introducidas sumadas a las actuales.
+  */  
     void modify_stats(int points, int wm, int lm, int ws, int ls, int wg, int lg);
 
+
+  /** @brief Modificadora de torneos ganados del jugador.
+
+      \pre <em>cierto<em>
+      \post El número de torneos jugados habrá aumentado en una unidad.
+  */  
     void increase_tour();
+
 
   /** @brief Operación de consulta de posición. 
 

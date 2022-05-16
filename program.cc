@@ -1,13 +1,17 @@
 /**
  * @mainpage Circuito de torneos de tenis. Arnau Granados.
   En este programa modular se ofrece una simulación de un circuito de tennis mediante el uso principal de árboles.
-  Se introducen las clases <em>player<em>, <em>ranking<em> (esencialmente un gestor de jugadores), <em>torneo<em>, <em>circuito<em> (un gestor de torneos)
+  Se introducen las clases <em>player<em>, <em>ranking<em> (esencialmente un gestor de jugadores), <em>torneo<em>, <em>circuito<em> (un gestor de torneos) y <em>partido<em>, la cual se usa para gestionar los resultados de estos.
 */
 
-/** @file main.cpp
-    @brief Programa principal para la práctica de circuitos de tennis. Contiene la lógica básica para ejecutar los comandos especificados en el enuncidado.
+/** @file program.cc
+    @brief Programa principal para la práctica de circuitos de tennis. 
+    
+    Contiene la lógica básica para ejecutar los comandos especificados en el enunciado.
 */
 #include "circuit.hh"
+#include "categories.hh" // redundante
+#include "ranking.hh" // redundante
 
 /** @brief Programa principal */
 int main() {
@@ -44,7 +48,7 @@ int main() {
             std::cout << "#" << s << ' ' << t << ' ' << c << std::endl;
             if (circuit.exists_tournament(t))
                 std::cout << "error: ya existe un torneo con ese nombre" << std::endl;
-            else if (1 > c or c > cat.get_max_categories())
+            else if (1 > c or c > cat.get_n_categories())
                 std::cout << "error: la categoria no existe" << std::endl;
             else {
                 circuit.add_tournament(tournament(t, c));
@@ -83,10 +87,9 @@ int main() {
         }
 
         else if (s == "finalizar_torneo" or s == "ft") {
-            std::cout << "#" << s << ' ';
             std::string t;
             std::cin >> t;
-            std::cout << t << std::endl;
+            std::cout << "#" << s << ' ' << t << std::endl;
             circuit.end_tour(t, global_ranking, cat);
         }
 
@@ -118,7 +121,7 @@ int main() {
 
         else if (s == "listar_categorias" or s == "lc") {
             std::cout << "#" << s << std::endl;
-            std::cout << cat.get_max_categories() << ' ' << cat.get_max_lvl() << std::endl;
+            std::cout << cat.get_n_categories() << ' ' << cat.get_max_lvl() << std::endl;
             cat.print_categories();
         }
 
