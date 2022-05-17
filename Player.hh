@@ -1,5 +1,5 @@
-/** @file player.hh
-    @brief Especificaciones de player
+/** @file Player.hh
+    @brief Especificaciones de Player
 */
 
 #ifndef AKIRA_PLAYER_HH
@@ -9,12 +9,12 @@
 #include <iostream>
 #endif
 
-/** @class player
+/** @class Player
     @brief Representa un jugador de tennis.
 
     Es la unidad más básica del circuito de tennis. Contiene el nombre del jugador y las estadísticas de éste.
 */
-class player
+class Player
 {
 private:
     /** @brief Nombre del jugador. */
@@ -41,7 +41,7 @@ public:
       \pre La posición del ranking debe estar entre 1 y el número de jugadores totales del circuito.
       \post El resultado es un jugador con 0 puntos iniciales y todas las estadísticas a 0, junto con su correspondiente nombre y posición del ranking.
   */  
-    player(const std::string name, int rank_pos);
+    Player(const std::string name, int rank_pos);
 
 
   /** @brief Modificadora de posición en el rango global. 

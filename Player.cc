@@ -1,35 +1,35 @@
-/** @file player.cc
-    @brief Código de la clase player 
+/** @file Player.cc
+    @brief Código de la clase Player 
 */
 
-#include "player.hh"
+#include "Player.hh"
 
-player::player(const std::string name, int rank_pos) {
+Player::Player(const std::string name, int rank_pos) {
     this -> name = name;
     this -> rank_pos = rank_pos;
 }
 
-std::string player::get_name() const {
+std::string Player::get_name() const {
     return name;
 }
 
-int player::get_rank_position() const {
+int Player::get_rank_position() const {
     return rank_pos;
 }
 
-int player::get_total_points() const {
+int Player::get_total_points() const {
     return total_points;
 }
 
-void player::modify_rank_position(int rank_pos) {
+void Player::modify_rank_position(int rank_pos) {
     this -> rank_pos = rank_pos;
 }
 
-void player::modify_total_points(int points) {
+void Player::modify_total_points(int points) {
     total_points += points;
 }
 
-void player::modify_stats(int points, int wm, int lm, int ws, int ls, int wg, int lg) {
+void Player::modify_stats(int points, int wm, int lm, int ws, int ls, int wg, int lg) {
     total_points += points;
 
     matches_won_lost.first += wm;
@@ -42,11 +42,11 @@ void player::modify_stats(int points, int wm, int lm, int ws, int ls, int wg, in
     games_won_lost.second += lg;
 }
 
-void player::increase_tour() {
+void Player::increase_tour() {
     ++played_tours;
 }
 
-void player::print_player() const {
+void Player::print_player() const {
     std::cout << name << " Rk:" << rank_pos << " Ps:" << total_points 
     << " Ts:" << played_tours << " WM:" << matches_won_lost.first
     << " LM:" << matches_won_lost.second << " WS:" << sets_won_lost.first 

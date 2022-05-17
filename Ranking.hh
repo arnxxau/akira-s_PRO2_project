@@ -1,11 +1,11 @@
-/** @file ranking.hh
-    @brief Especificaciones de ranking
+/** @file Ranking.hh
+    @brief Especificaciones de Ranking
 */
 
 #ifndef AKIRA_RANK_HH
 #define AKIRA_RANK_HH
 
-#include "player.hh"
+#include "Player.hh"
 
 #ifndef NO_DIAGRAM
 #include <vector>
@@ -13,19 +13,19 @@
 #include <algorithm>
 #endif
 
-/** @class ranking
+/** @class Ranking
     @brief Representa un ranking de jugades de tennis.
 
     Es la segunda unidad más básica del circuito. Esencialmente es una lista de jugadores con la que se pueden ejecutar diversos métodos para su manejo;
     como ordenar todo el ranking o bien imprimir cada jugador con cada una de sus propiedades.
 */
-class ranking
+class Ranking
 {
 private:
     /** @brief Vector que contiene los jugadores del ranking en forma de iterador */
-    std::vector<std::map<std::string, player>::iterator > rank;
+    std::vector<std::map<std::string, Player>::iterator > rank;
     /** @brief Mapa de jugadores que tiene como clave el nombre de estos */
-    std::map<std::string, player> players_map;
+    std::map<std::string, Player> players_map;
     
     /** @brief Entero que representa el número de jugadores actuales en el ranking  */
     int number_of_players = 0;
@@ -35,8 +35,8 @@ private:
       \post Retorna verdadero si los puntos de p1 son mayores que los de p2. En el caso de ser estos iguales, solo retornaria verdadero si el ranking anterior de p1 es mayor a p2.
             Si no se cumple nada de lo anterior, devolvería falso.
   */
-    static bool order(const std::map<std::string, player>::iterator& p1, 
-        const std::map<std::string, player>::iterator& p2);
+    static bool order(const std::map<std::string, Player>::iterator& p1, 
+        const std::map<std::string, Player>::iterator& p2);
 
 public:
 
@@ -47,7 +47,7 @@ public:
       \pre <em>cierto</em>
       \post El resultado es un ranking con 0 jugadores.
   */  
-    ranking();
+    Ranking();
     
   /** @brief Operación de lectura. 
 
@@ -90,14 +90,14 @@ public:
       \pre El jugador existe en el ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_name(const std::string& name) const;
+    Player get_player_by_name(const std::string& name) const;
 
   /** @brief Consulta un jugador del ranking por su posición en el ranking.
 
       \pre El entero es una posición válida del ranking.
       \post Retorna al jugador.
   */
-    player get_player_by_pos(int position) const;
+    Player get_player_by_pos(int position) const;
 
   /** @brief Modificadora de las estadísticas de un jugador del ranking.
    *    Cada parámetro corresponde a una estadísticas, la lista de correspondencias es la siguiente:

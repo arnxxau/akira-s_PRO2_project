@@ -9,21 +9,21 @@
     
     Contiene la lógica básica para ejecutar los comandos especificados en el enunciado.
 */
-#include "circuit.hh"
-#include "categories.hh" // redundante
-#include "ranking.hh" // redundante
+#include "Circuit.hh"
+#include "Categories.hh" // redundante
+#include "Ranking.hh" // redundante
 
 /** @brief Programa principal */
 int main() {
     std::string s;
 
-    categories cat;
+    Categories cat;
     cat.read_categories();
     
-    circuit circuit;
+    Circuit circuit;
     circuit.read_tournaments();
 
-    ranking global_ranking;
+    Ranking global_ranking;
     global_ranking.read_players();
 
     std::cin >> s;
@@ -51,7 +51,7 @@ int main() {
             else if (1 > c or c > cat.get_n_categories())
                 std::cout << "error: la categoria no existe" << std::endl;
             else {
-                circuit.add_tournament(tournament(t, c));
+                circuit.add_tournament(Tournament(t, c));
                 std::cout << circuit.get_n_tournaments() << std::endl;
             }
         }

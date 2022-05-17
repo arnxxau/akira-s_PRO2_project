@@ -1,10 +1,10 @@
-/** @file match.cc
-    @brief Código de la clase match 
+/** @file Match.cc
+    @brief Código de la clase Match
 */
 
-#include "match.hh"
+#include "Match.hh"
 
-match::match(const std::string& input, int left_pos, int right_pos){
+Match::Match(const std::string& input, int left_pos, int right_pos){
     this -> left_pos = left_pos;
     this -> right_pos = right_pos;
     this -> input = input;
@@ -12,13 +12,13 @@ match::match(const std::string& input, int left_pos, int right_pos){
     read_match();
 }
 
-match::match(int only) {
+Match::Match(int only) {
     left_pos = only;
     b_winner = true;
     empty = true;
 }
 
-void match::read_set(set& s, int& i) {
+void Match::read_set(set& s, int& i) {
     s.first = input[i] - '0';
     left_games += s.first;
     s.second = input[i + 2] - '0';
@@ -26,7 +26,7 @@ void match::read_set(set& s, int& i) {
     i += 4;
 }
 
-void match::read_match() {
+void Match::read_match() {
     set s;
     bool invalid = false;
     int i = 0;
@@ -55,34 +55,34 @@ void match::read_match() {
     }
 }
 
-int match::get_winner() const{
+int Match::get_winner() const{
     if (b_winner) return left_pos;
     else return right_pos;
 }
 
-int match::get_sets(bool left) const {
+int Match::get_sets(bool left) const {
     if (left) return left_sets;
     else return right_sets;
 }
 
-int match::get_games(bool left) const {
+int Match::get_games(bool left) const {
     if (left) return left_games;
     else return right_games;
 }
 
-int match::get_pos(bool left) const {
+int Match::get_pos(bool left) const {
     if (left) return left_pos;
     else return right_pos;
 }
 
-bool match::get_bool() const {
+bool Match::get_bool() const {
     return b_winner;
 }
 
-std::string match::get_result() const {
+std::string Match::get_result() const {
     return input;
 }
 
-bool match::is_empty() const {
+bool Match::is_empty() const {
     return empty;
 }

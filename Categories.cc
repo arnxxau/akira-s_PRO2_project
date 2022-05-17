@@ -1,12 +1,12 @@
-/** @file categories.cc
-    @brief Código de la clase categories 
+/** @file Categories.cc
+    @brief Código de la clase Categories 
 */
 
-#include "categories.hh"
+#include "Categories.hh"
 
-categories::categories(){}
+Categories::Categories(){}
 
-void categories::read_categories() {
+void Categories::read_categories() {
     std::cin >> n_categories >> max_lvl;
     std::vector<std::string> names(n_categories);
     std::vector<std::vector<int> > points_per_level (n_categories, std::vector<int>(max_lvl));
@@ -22,29 +22,23 @@ void categories::read_categories() {
     this -> points_per_level = points_per_level;
 }
 
-int categories::get_points(int category, int level) const {
+int Categories::get_points(int category, int level) const {
     return points_per_level[category - 1][level - 1];
 }
 
-std::string categories::get_name(int category) const {
+std::string Categories::get_name(int category) const {
     return names[category - 1];
 }
 
-int categories::get_level(const std::string name) const {
-    for (int i = 0; i < n_categories; ++i)
-        if (name == names[i]) return i;
-    return -1;
-}
-
-int categories::get_n_categories() const {
+int Categories::get_n_categories() const {
     return n_categories;
 }
 
-int categories::get_max_lvl() const {
+int Categories::get_max_lvl() const {
     return max_lvl;
 }
 
-void categories::print_categories() const{
+void Categories::print_categories() const{
     for (int i = 0; i < n_categories; ++i) {
          std::cout << names[i];
          for (int j = 0; j < max_lvl; ++j)

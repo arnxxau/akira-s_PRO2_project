@@ -1,5 +1,5 @@
-/** @file categories.hh
-    @brief Especificaciones de categories
+/** @file Categories.hh
+    @brief Especificaciones de Categories
 */
 
 #ifndef AKIRA_CATEGORIES_HH
@@ -10,12 +10,12 @@
 #include <iostream>
 #endif
 
-/** @class categories
+/** @class Categories
     @brief Representa las categorías de los torneos.
 
     Permite almacenar las diferentes categorías de torneos, y de esta forma, ofrecer a la clase torneo una manera simple de obtener los puntos que debe sumar a cada jugador.
 */
-class categories
+class Categories
 {
 private:
     /** @brief Indica la cantidad de niveles máximo que puede poseer un torneo. */
@@ -31,9 +31,9 @@ public:
 
       Se ejecuta automáticamente al declarar categorías.
       \pre <em>cierto<em>
-      \post El resultado es una instancia de categorías vacio.
+      \post El resultado es una instancia de categorías vacía.
   */  
-    categories();
+    Categories();
 
 
   /** @brief Operación de lectura para guardar todas las categorías. Primero lee el número de categorías, después el nivel máximo, 
@@ -57,13 +57,6 @@ public:
       \post Retorna el nombre de la categoría introducida.
   */  
     std::string get_name(int category) const;
-
- /** @brief Consultora para el nivel de un nombre de una categoría.
-
-      \pre El string debe ser un nombre válido de una categoría
-      \post Retorna el nivel de la categoría introducida.
-  */  
-    int get_level(const std::string name) const;
 
  /** @brief Consultora para el nivel máximo de las categorías.
 

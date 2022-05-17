@@ -1,5 +1,5 @@
-/** @file match.hh
-    @brief Especificaciones de match
+/** @file Match.hh
+    @brief Especificaciones de Match
 */
 
 #ifndef AKIRA_MATCH_HH
@@ -10,12 +10,12 @@
 #endif
 
 
-/** @class match
+/** @class Match
     @brief Representa un partido tennis.
 
     Permite almacenar el resultado de un partido y así calcular todas las estadísticas correspondientes, incluido el ganador de este.
 */
-class match
+class Match
 {
     
 private:
@@ -61,7 +61,7 @@ public:
       \pre El string debe ser un resumen válido de un partido y las posiciones deben deben existir en el torneo desde el que se llama.
       \post El resultado es un partido con los parámetros introducidos y con el ganador ya computado.
   */  
-    match(const std::string& input, int left_pos, int right_pos);
+    Match(const std::string& input, int left_pos, int right_pos);
 
 /** @brief Creadora opcional. 
     Sirve esencialmente para usarse de hoja en el árbol de resultados y así facilitar la recursividad.
@@ -69,7 +69,7 @@ public:
       \pre El entero debe ser una posición válida del torneo.
       \post Se creará un partido sin resultados en el cual el ganador es el entero introducido.
   */  
-    match(int only);
+    Match(int only);
 
  /** @brief Consultora para el ganador del partido.
 
